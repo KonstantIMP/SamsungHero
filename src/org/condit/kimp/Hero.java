@@ -60,6 +60,7 @@ public class Hero {
 
     public void setHealth(int health) {
         this.health = health;
+        if (health < 0) this.health = 0;
     }
 
     public int getSpeed() {
@@ -76,6 +77,7 @@ public class Hero {
 
     public void setGold(int gold) {
         this.gold = gold;
+        if (gold < 0) this.gold = 0;
     }
 
     public LinkedList<String> getItems() {
@@ -106,6 +108,7 @@ public class Hero {
 
     public void attack(int damage) {
         health -= damage;
+        if(health < 0) health = 0;
     }
 
     public boolean buy(int cost) {
@@ -124,7 +127,7 @@ public class Hero {
         health = 100;
     }
 
-    public void move(int x, int y, int z) {
+    public void move(double x, double y, double z) {
         location.setX(location.getX() + x);
         location.setY(location.getY() + y);
         location.setZ(location.getZ() + z);
@@ -146,19 +149,19 @@ public class Hero {
 
         builder.append("\tHealth: ");
         builder.append(String.valueOf(health));
-        builder.append("\tDamage level: ");
+        builder.append("\n\tDamage level: ");
         builder.append(String.valueOf(damageLevel));
-        builder.append("\tSpeed: ");
+        builder.append("\n\tSpeed: ");
         builder.append(String.valueOf(speed));
-        builder.append("\tExperience: ");
+        builder.append("\n\tExperience: ");
         builder.append(String.valueOf(experience));
 
-        builder.append("\tLocation: ");
+        builder.append("\n\tLocation: ");
         builder.append(String.valueOf(location.getX())).append(":");
         builder.append(String.valueOf(location.getY())).append(":");
         builder.append(String.valueOf(location.getZ()));
 
-        builder.append("\tItems: [");
+        builder.append("\n\tItems: [");
         for (int i = 0; i < items.size(); i++) {
             builder.append(items.get(i));
             if (i + 1 != items.size()) builder.append(", ");
