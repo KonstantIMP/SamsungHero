@@ -95,4 +95,55 @@ public class Hero {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("Hero: ");
+
+        switch (type) {
+            case ELF -> builder.append("ELF");
+            case MAN -> builder.append("MAN");
+            case ORC -> builder.append("ORC");
+            case VAMPIRE -> builder.append("VAMPIRE");
+            case WEREWOLF -> builder.append("WEREWOLF");
+        } builder.append("\n");
+
+        builder.append("\tHealth: ");
+        builder.append(String.valueOf(health));
+        builder.append("\tDamage level: ");
+        builder.append(String.valueOf(damageLevel));
+        builder.append("\tSpeed: ");
+        builder.append(String.valueOf(speed));
+        builder.append("\tExperience: ");
+        builder.append(String.valueOf(experience));
+
+        builder.append("\tLocation: ");
+        builder.append(String.valueOf(location.getX())).append(":");
+        builder.append(String.valueOf(location.getY())).append(":");
+        builder.append(String.valueOf(location.getZ()));
+
+        builder.append("\tItems: [");
+        for (int i = 0; i < items.size(); i++) {
+            builder.append(items.get(i));
+            if (i + 1 != items.size()) builder.append(", ");
+        } builder.append("]\n");
+
+        return builder.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Hero hero = (Hero) o;
+
+        if (experience != hero.experience) return false;
+        if (damageLevel != hero.damageLevel) return false;
+        if (health != hero.health) return false;
+        if (speed != hero.speed) return false;
+        return type == hero.type;
+    }
 }
