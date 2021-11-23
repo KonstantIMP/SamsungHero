@@ -96,6 +96,40 @@ public class Hero {
         return false;
     }
 
+    public boolean isAlive() {
+        return health > 0;
+    }
+
+    public void kill() {
+        health = 0;
+    }
+
+    public void attack(int damage) {
+        health -= damage;
+    }
+
+    public boolean buy(int cost) {
+        if (gold >= cost) {
+            gold -= cost;
+            return true;
+        }
+        return false;
+    }
+
+    public void carry(Location l) {
+        location = new Location(l);
+    }
+
+    public void respawn() {
+        health = 100;
+    }
+
+    public void move(int x, int y, int z) {
+        location.setX(location.getX() + x);
+        location.setY(location.getY() + y);
+        location.setZ(location.getZ() + z);
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
