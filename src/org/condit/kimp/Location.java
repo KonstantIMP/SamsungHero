@@ -11,6 +11,10 @@ public class Location {
         this.x = x; this.y = y; this.z = z;
     }
 
+    public Location(Location copy) {
+        x = copy.x; y = copy.y; z = copy.z;
+    }
+
     public double getX() {
         return x;
     }
